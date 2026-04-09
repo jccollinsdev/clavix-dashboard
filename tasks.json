@@ -1,0 +1,9 @@
+{
+  "rsm": [],
+  "school": [],
+  "clavis": [],
+  "week": [
+    { "name": "RSM Algebra homework assigned", "tag": "tuesday", "status": "todo", "due": "2026-04-14" },
+    { "name": "RSM Geometry homework assigned", "tag": "wednesday", "status": "todo", "due": "2026-04-15" }
+  ]
+}
