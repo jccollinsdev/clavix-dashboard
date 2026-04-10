@@ -4,7 +4,7 @@
     { "name": "Geometry homework", "tag": "RSM Geometry", "status": "todo", "due": "2026-04-15" }
   ],
   "school": [],
-  "clavis": [],
+  "clavix": [],
   "week": [
     { "name": "RSM Algebra — due before next class", "tag": "algebra", "status": "todo", "due": "2026-04-14" },
     { "name": "RSM Geometry — due before next class", "tag": "geometry", "status": "todo", "due": "2026-04-15" }
