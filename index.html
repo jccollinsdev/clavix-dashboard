@@ -14,52 +14,48 @@
 <meta name="twitter:title" content="Clavix - Portfolio Intelligence" />
 <meta name="twitter:description" content="Know where your portfolio stands before the market tells you." />
 <meta name="twitter:image" content="https://getclavix.com/img/og-image.png" />
-  <link rel="canonical" href="https://getclavix.com/" />
+<link rel="canonical" href="https://getclavix.com/" />
 <link rel="icon" type="image/png" href="img/App Logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
  :root {
- --bg-primary:   #0F1117;
- --surface:      #161B24;
- --surface-el:   #1E2530;
- --border:       #2A3140;
- --text-pri:     #E8ECF0;
- --text-sec:     #7A8799;
-
- --risk-a: #1D9E75;
- --risk-b: #639922;
- --risk-c: #BA7517;
- --risk-d: #D85A30;
- --risk-f: #C8342B;
-
- --grade-ab: #E1F5EE;
- --grade-at: #085041;
- --grade-bb: #EAF3DE;
- --grade-bt: #27500A;
- --grade-cb: #FAEEDA;
- --grade-ct: #633806;
- --grade-db: #FAECE7;
- --grade-dt: #712B13;
- --grade-fb: #FCEBEB;
- --grade-ft: #791F1F;
-
- --font-ui:   'Inter', sans-serif;
- --font-mono: 'JetBrains Mono', monospace;
+ --bg:         #0A0B0E;
+ --surface:    #111318;
+ --surface-el: #181B22;
+ --border:     #252830;
+ --border-hot: #3A3D48;
+ --text:       #E0E2E6;
+ --text-dim:   #6B7084;
+ --text-faint: #3E4150;
+ --accent:     #C8A96E;
+ --risk-a:     #2EBD82;
+ --risk-b:     #72A832;
+ --risk-c:     #CC8B1E;
+ --risk-d:     #E0603A;
+ --risk-f:     #D43A2F;
+ --serif:      'Instrument Serif', Georgia, serif;
+ --sans:       'IBM Plex Sans', 'Inter', system-ui, sans-serif;
+ --mono:       'DM Mono', 'JetBrains Mono', monospace;
  }
 
  html { scroll-behavior: smooth; }
 
  body {
- background: var(--bg-primary);
- color: var(--text-pri);
- font-family: var(--font-ui);
+ background: var(--bg);
+ color: var(--text);
+ font-family: var(--sans);
  font-weight: 400;
  -webkit-font-smoothing: antialiased;
  overflow-x: hidden;
+ }
+
+ ::selection {
+ background: var(--accent);
+ color: var(--bg);
  }
 
  /* ── NAV ── */
@@ -70,50 +66,67 @@
  display: flex;
  align-items: center;
  justify-content: space-between;
- padding: 0 3rem;
- height: 64px;
- background: rgba(15,17,23,0.92);
- backdrop-filter: blur(12px);
- border-bottom: 0.5px solid var(--border);
+ padding: 0 2.5rem;
+ height: 56px;
+ background: rgba(10,11,14,0.95);
+ backdrop-filter: blur(16px);
+ border-bottom: 1px solid var(--border);
  }
 
- .nav-logo img { display: block; height: 36px; width: auto; }
+ .nav-logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ text-decoration: none;
+ }
+
+ .nav-logo img { display: block; height: 28px; width: auto; }
+
+ .nav-logo-text {
+ font-family: var(--mono);
+ font-weight: 500;
+ font-size: 0.85rem;
+ letter-spacing: 0.18em;
+ color: #FEF5E7;
+ text-transform: uppercase;
+ }
 
  .nav-links {
  display: flex;
- gap: 2.5rem;
+ gap: 2rem;
  list-style: none;
  }
 
  .nav-links a {
- font-size: 0.78rem;
- letter-spacing: 0.08em;
+ font-family: var(--mono);
+ font-size: 0.68rem;
+ letter-spacing: 0.1em;
  text-transform: uppercase;
- color: var(--text-sec);
+ color: var(--text-dim);
  text-decoration: none;
  transition: color 0.2s;
  }
 
- .nav-links a:hover { color: var(--text-pri); }
+ .nav-links a:hover { color: var(--text); }
 
  .nav-cta {
- display: inline-block;
- font-size: 0.78rem;
- letter-spacing: 0.06em;
+ font-family: var(--mono);
+ font-size: 0.68rem;
+ letter-spacing: 0.1em;
  text-transform: uppercase;
- padding: 9px 22px;
- border: 1px solid var(--border);
- color: var(--text-pri);
+ padding: 8px 20px;
+ border: 1px solid var(--accent);
+ color: var(--accent);
  text-decoration: none;
- transition: background 0.2s, border-color 0.2s;
+ transition: background 0.2s, color 0.2s;
  }
 
- .nav-cta:hover { background: var(--surface-el); border-color: var(--text-sec); }
+ .nav-cta:hover { background: var(--accent); color: var(--bg); }
 
  .nav-hamburger {
  display: none;
  flex-direction: column;
- gap: 5px;
+ gap: 4px;
  cursor: pointer;
  padding: 8px;
  background: none;
@@ -122,9 +135,9 @@
 
  .nav-hamburger span {
  display: block;
- width: 22px;
- height: 1.5px;
- background: var(--text-pri);
+ width: 20px;
+ height: 1px;
+ background: var(--text);
  }
 
  /* ── HERO ── */
@@ -132,182 +145,254 @@
  min-height: 100vh;
  display: grid;
  grid-template-columns: 1fr 1fr;
- padding-top: 64px;
- overflow: hidden;
+ padding-top: 56px;
  }
 
  .hero-left {
  display: flex;
  flex-direction: column;
- justify-content: center;
- padding: 6rem 4rem 6rem 4rem;
- border-right: 0.5px solid var(--border);
+ justify-content: flex-end;
+ padding: 4rem 4rem 5rem;
+ border-right: 1px solid var(--border);
+ position: relative;
  }
 
- .hero-kicker {
- font-size: 0.7rem;
- letter-spacing: 0.16em;
+ .hero-left::after {
+ content: '';
+ position: absolute;
+ bottom: 0;
+ left: 4rem;
+ right: 4rem;
+ height: 1px;
+ background: var(--accent);
+ opacity: 0.35;
+ }
+
+ .hero-edition {
+ font-family: var(--mono);
+ font-size: 0.62rem;
+ letter-spacing: 0.2em;
  text-transform: uppercase;
- color: var(--text-sec);
- margin-bottom: 2rem;
+ color: var(--accent);
+ margin-bottom: 2.5rem;
  display: flex;
  align-items: center;
- gap: 12px;
+ gap: 14px;
  }
 
- .hero-kicker::before {
+ .hero-edition::before {
  content: '';
- width: 32px;
+ width: 40px;
  height: 1px;
- background: var(--text-sec);
+ background: var(--accent);
  display: block;
  }
 
  .hero-headline {
- font-size: clamp(2.4rem, 4vw, 3.6rem);
+ font-family: var(--serif);
+ font-size: clamp(3rem, 5vw, 4.5rem);
  font-weight: 400;
- line-height: 1.12;
- letter-spacing: -0.02em;
+ line-height: 1.05;
+ letter-spacing: -0.025em;
  margin-bottom: 2rem;
- color: var(--text-pri);
+ color: var(--text);
  }
 
- .hero-headline em {
+ .hero-headline .ital {
  font-style: italic;
- color: var(--text-sec);
+ color: var(--text-dim);
  }
 
- .hero-body {
- font-size: 1rem;
- line-height: 1.78;
- color: var(--text-sec);
- max-width: 440px;
- margin-bottom: 3rem;
+ .hero-deck {
+ font-size: 1.05rem;
+ line-height: 1.8;
+ color: var(--text-dim);
+ max-width: 460px;
+ margin-bottom: 3.5rem;
  font-weight: 300;
  }
 
- .hero-form {
+ .hero-cta-group {
  display: flex;
  flex-direction: column;
- gap: 12px;
- max-width: 400px;
+ gap: 14px;
+ max-width: 420px;
  }
 
  .hero-form-row {
  display: flex;
- gap: 0;
  }
 
  .hero-input {
  flex: 1;
- height: 48px;
+ height: 52px;
  border: 1px solid var(--border);
  border-right: none;
  background: var(--surface);
- padding: 0 1.2rem;
- font-family: var(--font-ui);
- font-size: 1rem;
- color: var(--text-pri);
+ padding: 0 1.4rem;
+ font-family: var(--mono);
+ font-size: 0.82rem;
+ color: var(--text);
  outline: none;
  -webkit-appearance: none;
  border-radius: 0;
- display: flex;
- align-items: center;
  }
 
- .hero-input::placeholder { color: var(--text-sec); }
- .hero-input:focus { border-color: var(--text-sec); background: var(--surface-el); }
+ .hero-input::placeholder { color: var(--text-faint); }
+ .hero-input:focus { border-color: var(--accent); background: var(--surface-el); }
 
  .hero-btn {
- height: 48px;
- padding: 0 1.8rem;
- background: var(--surface-el);
- color: var(--text-pri);
- border: 1px solid var(--border);
- font-family: var(--font-ui);
- font-size: 0.8rem;
- letter-spacing: 0.1em;
+ height: 52px;
+ padding: 0 2rem;
+ background: var(--accent);
+ color: var(--bg);
+ border: 1px solid var(--accent);
+ font-family: var(--mono);
+ font-size: 0.72rem;
+ letter-spacing: 0.14em;
  text-transform: uppercase;
  cursor: pointer;
  white-space: nowrap;
- transition: background 0.18s, border-color 0.18s;
- display: flex;
- align-items: center;
- justify-content: center;
+ font-weight: 500;
+ transition: opacity 0.18s;
  }
 
- .hero-btn:hover { background: var(--border); border-color: var(--text-sec); }
+ .hero-btn:hover { opacity: 0.85; }
 
- .hero-smallprint {
- font-size: 0.72rem;
- color: var(--text-sec);
+ .hero-meta {
+ font-family: var(--mono);
+ font-size: 0.65rem;
+ color: var(--text-faint);
  letter-spacing: 0.04em;
+ line-height: 1.8;
  }
 
- /* hero right - app screenshot */
+ .hero-meta span { color: var(--text-dim); }
+
  .hero-right {
  display: flex;
  align-items: center;
  justify-content: center;
- padding: 4rem 3rem;
+ padding: 5rem 3rem;
  background: var(--surface);
  position: relative;
  overflow: hidden;
  }
 
+ .hero-right::before {
+ content: '';
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ width: 300px;
+ height: 300px;
+ border: 1px solid var(--border);
+ border-radius: 50%;
+ transform: translate(-50%, -50%);
+ opacity: 0.3;
+ }
+
  .hero-phone {
  width: 100%;
- max-width: 320px;
- border-radius: 36px;
- border: 1.5px solid var(--border);
- box-shadow: 0 0 60px rgba(0,0,0,0.6), 0 0 120px rgba(29,158,117,0.08);
+ max-width: 300px;
+ border-radius: 32px;
+ border: 1px solid var(--border);
+ box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,169,110,0.06);
  display: block;
+ position: relative;
+ z-index: 1;
  }
 
  .hero-phone-caption {
  position: absolute;
- bottom: 2rem;
- left: 0;
- right: 0;
+ bottom: 2.5rem;
+ left: 0; right: 0;
  text-align: center;
- font-size: 0.68rem;
- letter-spacing: 0.1em;
+ font-family: var(--mono);
+ font-size: 0.6rem;
+ letter-spacing: 0.14em;
  text-transform: uppercase;
- color: var(--text-sec);
- opacity: 0.5;
+ color: var(--text-faint);
  }
+
+ /* ── TICKER BAR ── */
+ .ticker-bar {
+ display: flex;
+ border-top: 1px solid var(--border);
+ border-bottom: 1px solid var(--border);
+ background: var(--surface);
+ overflow: hidden;
+ }
+
+ .ticker-row {
+ display: flex;
+ align-items: center;
+ width: 100%;
+ padding: 0.9rem 4rem;
+ gap: 3rem;
+ font-family: var(--mono);
+ font-size: 0.68rem;
+ letter-spacing: 0.06em;
+ color: var(--text-dim);
+ white-space: nowrap;
+ flex-shrink: 0;
+ }
+
+ .ticker-item { display: flex; gap: 0.6rem; align-items: baseline; }
+ .ticker-sym { color: var(--text); font-weight: 500; }
+ .ticker-grade {
+ font-size: 0.62rem;
+ padding: 2px 7px;
+ border: 1px solid;
+ letter-spacing: 0.1em;
+ font-weight: 500;
+ }
+ .ticker-grade.g-a { color: var(--risk-a); border-color: var(--risk-a); }
+ .ticker-grade.g-b { color: var(--risk-b); border-color: var(--risk-b); }
+ .ticker-grade.g-c { color: var(--risk-c); border-color: var(--risk-c); }
+ .ticker-grade.g-d { color: var(--risk-d); border-color: var(--risk-d); }
+ .ticker-grade.g-f { color: var(--risk-f); border-color: var(--risk-f); }
+ .ticker-action { color: var(--text-dim); }
+ .ticker-dim { opacity: 0.35; }
 
  /* ── SECTION SHARED ── */
  section {
- padding: 5rem 4rem;
- border-top: 0.5px solid var(--border);
+ padding: 6rem 4rem;
+ border-top: 1px solid var(--border);
  }
 
- .section-tag {
- font-size: 0.68rem;
- letter-spacing: 0.16em;
+ .section-label {
+ font-family: var(--mono);
+ font-size: 0.6rem;
+ letter-spacing: 0.2em;
  text-transform: uppercase;
- color: var(--text-sec);
+ color: var(--accent);
  margin-bottom: 1.5rem;
  display: flex;
  align-items: center;
  gap: 10px;
  }
 
- .section-tag::before {
+ .section-label::before {
  content: '';
- width: 24px; height: 1px;
- background: var(--text-sec);
+ width: 28px; height: 1px;
+ background: var(--accent);
  display: block;
  }
 
- .section-headline {
- font-size: clamp(1.8rem, 3vw, 2.6rem);
+ .section-title {
+ font-family: var(--serif);
+ font-size: clamp(2.4rem, 4vw, 3.4rem);
  font-weight: 400;
- line-height: 1.2;
+ line-height: 1.1;
  letter-spacing: -0.02em;
  margin-bottom: 1.5rem;
- color: var(--text-pri);
+ color: var(--text);
+ }
+
+ .section-title .dim {
+ font-style: italic;
+ color: var(--text-dim);
  }
 
  /* ── HOW IT WORKS ── */
@@ -316,37 +401,41 @@
  grid-template-columns: repeat(3, 1fr);
  gap: 0;
  margin-top: 4rem;
- border: 0.5px solid var(--border);
+ border: 1px solid var(--border);
  }
 
  .how-cell {
- padding: 2.5rem 2rem;
- border-right: 0.5px solid var(--border);
+ padding: 3rem 2.5rem;
+ border-right: 1px solid var(--border);
  background: var(--surface);
+ position: relative;
+ transition: background 0.2s;
  }
 
+ .how-cell:hover { background: var(--surface-el); }
  .how-cell:last-child { border-right: none; }
 
  .how-num {
- font-family: var(--font-mono);
- font-size: 3rem;
- color: var(--border);
- line-height: 1;
- margin-bottom: 1.5rem;
- font-weight: 400;
+ font-family: var(--mono);
+ font-size: 0.68rem;
+ letter-spacing: 0.14em;
+ color: var(--accent);
+ margin-bottom: 2rem;
+ font-weight: 500;
  }
 
  .how-title {
- font-size: 1.15rem;
+ font-family: var(--serif);
+ font-size: 1.45rem;
  font-weight: 400;
- margin-bottom: 0.75rem;
- line-height: 1.3;
- color: var(--text-pri);
+ margin-bottom: 1rem;
+ line-height: 1.25;
+ color: var(--text);
  }
 
  .how-desc {
- font-size: 0.85rem;
- color: var(--text-sec);
+ font-size: 0.88rem;
+ color: var(--text-dim);
  line-height: 1.75;
  font-weight: 300;
  }
@@ -356,17 +445,16 @@
  display: grid;
  grid-template-columns: 1fr 1fr;
  gap: 0;
- padding: 0;
- border-top: 0.5px solid var(--border);
+ border-top: 1px solid var(--border);
  }
 
  .signals-left {
  padding: 7rem 4rem;
- border-right: 0.5px solid var(--border);
+ border-right: 1px solid var(--border);
  display: flex;
  flex-direction: column;
  justify-content: center;
- background: var(--bg-primary);
+ background: var(--bg);
  }
 
  .signals-right {
@@ -380,117 +468,118 @@
  .signal-phone {
  width: 100%;
  max-width: 280px;
- border-radius: 32px;
- border: 1.5px solid var(--border);
- box-shadow: 0 0 40px rgba(0,0,0,0.5);
+ border-radius: 28px;
+ border: 1px solid var(--border);
+ box-shadow: 0 40px 80px rgba(0,0,0,0.4);
  display: block;
+ }
+
+ .signals-body {
+ font-size: 1rem;
+ line-height: 1.8;
+ color: var(--text-dim);
+ font-weight: 300;
+ max-width: 420px;
  }
 
  .signal-chips {
  display: flex;
  flex-direction: column;
- gap: 14px;
+ gap: 1px;
  margin-top: 3rem;
+ background: var(--border);
+ border: 1px solid var(--border);
  }
 
  .signal-chip {
- display: flex;
+ display: grid;
+ grid-template-columns: 90px 1px 1fr;
  align-items: center;
- gap: 1.2rem;
- padding: 1.1rem 1.4rem;
- border: 0.5px solid var(--border);
+ gap: 0;
  background: var(--surface-el);
- transition: border-color 0.2s;
  }
 
- .signal-chip:hover { border-color: var(--text-sec); }
-
  .chip-action {
- font-size: 0.65rem;
- letter-spacing: 0.12em;
+ font-family: var(--mono);
+ font-size: 0.62rem;
+ letter-spacing: 0.14em;
  text-transform: uppercase;
  font-weight: 500;
- min-width: 60px;
- font-family: var(--font-ui);
+ padding: 1rem 1.2rem;
+ text-align: center;
  }
 
  .chip-divider {
- width: 0.5px;
- height: 28px;
+ width: 1px;
+ height: 100%;
  background: var(--border);
- flex-shrink: 0;
  }
 
  .chip-text {
- font-size: 0.82rem;
- color: var(--text-sec);
- line-height: 1.5;
+ font-size: 0.85rem;
+ color: var(--text-dim);
+ line-height: 1.55;
+ padding: 1rem 1.4rem;
  font-weight: 300;
  }
 
- .chip-ignore .chip-action { color: var(--text-sec); }
+ .chip-ignore .chip-action { color: var(--text-dim); }
  .chip-monitor .chip-action { color: var(--risk-c); }
  .chip-reduce .chip-action { color: var(--risk-d); }
  .chip-exit   .chip-action { color: var(--risk-f); }
  .chip-add    .chip-action { color: var(--risk-a); }
-
- .signals-body {
- font-size: 0.95rem;
- line-height: 1.8;
- color: var(--text-sec);
- font-weight: 300;
- max-width: 420px;
- }
 
  /* ── DIGEST ── */
  section#digest {
  background: var(--surface);
  }
 
- .digest-levels {
+ .digest-grid {
  display: grid;
  grid-template-columns: repeat(3, 1fr);
- gap: 2rem;
+ gap: 0;
  margin-top: 4rem;
+ border: 1px solid var(--border);
  }
 
- .digest-level { padding: 0; }
+ .digest-cell {
+ padding: 3rem 2.5rem;
+ border-right: 1px solid var(--border);
+ background: var(--surface-el);
+ position: relative;
+ }
 
- .digest-level-tag {
- font-size: 0.65rem;
+ .digest-cell:last-child { border-right: none; }
+
+ .digest-cell-num {
+ font-family: var(--mono);
+ font-size: 0.68rem;
  letter-spacing: 0.14em;
- text-transform: uppercase;
- color: var(--text-sec);
- margin-bottom: 1.2rem;
- padding-bottom: 1rem;
- border-bottom: 0.5px solid var(--border);
- display: flex;
- align-items: center;
- justify-content: space-between;
+ color: var(--accent);
+ margin-bottom: 1.5rem;
+ font-weight: 500;
  }
 
- .digest-level-n {
- font-family: var(--font-mono);
- font-size: 0.65rem;
- color: var(--text-sec);
- opacity: 0.5;
+ .digest-cell-title {
+ font-family: var(--serif);
+ font-size: 1.35rem;
+ font-weight: 400;
+ margin-bottom: 0.8rem;
+ line-height: 1.25;
+ color: var(--text);
  }
 
- .digest-item {
- font-size: 0.83rem;
- color: var(--text-sec);
- line-height: 1.65;
- padding: 0.8rem 0;
- border-bottom: 0.5px solid var(--border);
+ .digest-cell-body {
+ font-size: 0.88rem;
+ color: var(--text-dim);
+ line-height: 1.75;
  font-weight: 300;
  }
 
- .digest-item:last-child { border-bottom: none; }
-
  /* ── SEE THE APP ── */
  section#app {
- background: var(--bg-primary);
- padding-bottom: 5rem;
+ background: var(--bg);
+ padding-bottom: 6rem;
  }
 
  .screenshots-grid {
@@ -498,6 +587,20 @@
  grid-template-columns: repeat(5, 1fr);
  gap: 1rem;
  margin-top: 3rem;
+ }
+
+ .screenshot-card {
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ overflow: hidden;
+ transition: border-color 0.25s, transform 0.3s, box-shadow 0.3s;
+ }
+
+ .screenshot-card:hover {
+ border-color: var(--accent);
+ transform: translateY(-6px);
+ box-shadow: 0 12px 40px rgba(0,0,0,0.3);
  }
 
  .screenshot-card img {
@@ -508,70 +611,104 @@
  border-radius: 10px;
  }
 
+ .screenshot-label {
+ padding: 0.65rem 0.9rem;
+ font-family: var(--mono);
+ font-size: 0.58rem;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--text-dim);
+ border-top: 1px solid var(--border);
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ }
+
  .screenshots-scroll {
- display: none; /* hidden on desktop, shown via media query on mobile */
+ display: none;
  gap: 1rem;
  margin-top: 3rem;
  overflow-x: auto;
  -webkit-overflow-scrolling: touch;
  scroll-snap-type: x mandatory;
  padding-bottom: 1rem;
- /* hide scrollbar */
  scrollbar-width: none;
  -ms-overflow-style: none;
  }
+
  .screenshots-scroll::-webkit-scrollbar { display: none; }
 
- .screenshot-card {
+ .screenshots-scroll .screenshot-card {
  flex: 0 0 200px;
- background: var(--surface);
- border: 0.5px solid var(--border);
- border-radius: 12px;
- overflow: hidden;
  scroll-snap-align: start;
- transition: border-color 0.2s, transform 0.2s;
  }
 
- .screenshot-card:hover {
- border-color: var(--text-sec);
- transform: translateY(-4px);
+ /* ── TRUST STRIP ── */
+ .trust-strip {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 0;
+ border-top: 1px solid var(--border);
+ border-bottom: 1px solid var(--border);
+ background: var(--surface);
  }
 
- .screenshot-card img {
- width: 100%;
- display: block;
- border-radius: 12px;
+ .trust-cell {
+ padding: 3rem 2rem;
+ border-right: 1px solid var(--border);
+ text-align: center;
  }
 
- .screenshot-label {
- padding: 0.7rem 0.9rem;
- font-size: 0.65rem;
- letter-spacing: 0.08em;
+ .trust-cell:last-child { border-right: none; }
+
+ .trust-value {
+ font-family: var(--mono);
+ font-size: 2.2rem;
+ font-weight: 400;
+ color: var(--text);
+ line-height: 1;
+ margin-bottom: 0.75rem;
+ letter-spacing: -0.02em;
+ }
+
+ .trust-value .accent { color: var(--accent); }
+
+ .trust-label {
+ font-family: var(--mono);
+ font-size: 0.58rem;
+ letter-spacing: 0.16em;
  text-transform: uppercase;
- color: var(--text-sec);
- border-top: 0.5px solid var(--border);
- white-space: nowrap;
- overflow: hidden;
- text-overflow: ellipsis;
+ color: var(--text-dim);
  }
 
  /* ── OFFER / CTA ── */
  .offer-section {
  text-align: center;
- padding: 9rem 4rem;
- background: var(--surface-el);
- border-top: 0.5px solid var(--border);
+ padding: 10rem 4rem;
+ background: var(--bg);
+ border-top: 1px solid var(--border);
+ position: relative;
  }
 
- .offer-section .section-tag { color: var(--text-sec); justify-content: center; }
- .offer-section .section-tag::before { background: var(--text-sec); }
- .offer-section .section-headline { color: var(--text-pri); }
+ .offer-section::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 60px;
+ height: 1px;
+ background: var(--accent);
+ }
+
+ .offer-section .section-label { justify-content: center; }
+ .offer-section .section-title { color: var(--text); }
 
  .offer-body {
  font-size: 1rem;
- color: var(--text-sec);
+ color: var(--text-dim);
  line-height: 1.8;
- max-width: 500px;
+ max-width: 480px;
  margin: 0 auto 3rem;
  font-weight: 300;
  }
@@ -580,109 +717,141 @@
  display: flex;
  justify-content: center;
  gap: 0;
- max-width: 460px;
+ max-width: 480px;
  margin: 0 auto 1.5rem;
  }
 
  .offer-input {
  flex: 1;
- height: 52px;
+ height: 56px;
  background: var(--surface);
  border: 1px solid var(--border);
  border-right: none;
  padding: 0 1.4rem;
- font-family: var(--font-ui);
- font-size: 0.88rem;
- color: var(--text-pri);
+ font-family: var(--mono);
+ font-size: 0.82rem;
+ color: var(--text);
  outline: none;
  -webkit-appearance: none;
  border-radius: 0;
  }
 
- .offer-input::placeholder { color: var(--text-sec); }
- .offer-input:focus { border-color: var(--text-sec); background: var(--bg-primary); }
+ .offer-input::placeholder { color: var(--text-faint); }
+ .offer-input:focus { border-color: var(--accent); background: var(--surface-el); }
 
  .offer-btn {
- height: 52px;
- padding: 0 2rem;
- background: var(--text-pri);
- color: var(--bg-primary);
- border: 1px solid var(--text-pri);
- font-family: var(--font-ui);
- font-size: 0.78rem;
- letter-spacing: 0.1em;
+ height: 56px;
+ padding: 0 2.2rem;
+ background: var(--accent);
+ color: var(--bg);
+ border: 1px solid var(--accent);
+ font-family: var(--mono);
+ font-size: 0.72rem;
+ letter-spacing: 0.14em;
  text-transform: uppercase;
  cursor: pointer;
  font-weight: 500;
  transition: opacity 0.18s;
  }
 
- .offer-btn:hover { opacity: 0.88; }
+ .offer-btn:hover { opacity: 0.85; }
 
  .offer-smallprint {
- font-size: 0.72rem;
- color: var(--text-sec);
+ font-family: var(--mono);
+ font-size: 0.62rem;
+ color: var(--text-faint);
  letter-spacing: 0.04em;
  margin-top: 0.75rem;
  }
 
  .offer-counter {
- font-size: 0.72rem;
- color: var(--text-sec);
+ font-family: var(--mono);
+ font-size: 0.62rem;
+ color: var(--text-faint);
  letter-spacing: 0.04em;
  margin-top: 1rem;
  }
 
  /* ── FOOTER ── */
  footer {
- padding: 2.5rem 4rem;
- border-top: 0.5px solid var(--border);
- background: var(--bg-primary);
- display: flex;
- justify-content: space-between;
+ padding: 3rem 4rem;
+ border-top: 1px solid var(--border);
+ background: var(--bg);
+ display: grid;
+ grid-template-columns: auto 1fr auto;
  align-items: center;
- flex-wrap: wrap;
- gap: 1rem;
+ gap: 2rem;
+ }
+
+ .footer-brand {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ }
+
+ .footer-brand img { height: 24px; width: auto; opacity: 0.7; }
+
+ .footer-brand-text {
+ font-family: var(--mono);
+ font-weight: 500;
+ font-size: 0.78rem;
+ letter-spacing: 0.16em;
+ color: #FEF5E7;
+ text-transform: uppercase;
+ opacity: 0.5;
  }
 
  .footer-copy {
- font-size: 0.72rem;
- color: var(--text-sec);
+ font-family: var(--mono);
+ font-size: 0.62rem;
+ color: var(--text-faint);
  letter-spacing: 0.04em;
+ text-align: center;
  }
 
  .footer-links {
  display: flex;
- gap: 2rem;
+ gap: 1.5rem;
  list-style: none;
  }
 
  .footer-links a {
- font-size: 0.72rem;
- color: var(--text-sec);
+ font-family: var(--mono);
+ font-size: 0.62rem;
+ color: var(--text-dim);
  text-decoration: none;
- letter-spacing: 0.04em;
+ letter-spacing: 0.06em;
  transition: color 0.2s;
  }
 
- .footer-links a:hover { color: var(--text-pri); }
+ .footer-links a:hover { color: var(--text); }
+
+ .footer-risk {
+ grid-column: 1 / -1;
+ font-size: 0.62rem;
+ color: var(--text-faint);
+ line-height: 1.65;
+ border-top: 1px solid var(--border);
+ padding-top: 1.25rem;
+ margin-top: 0.5rem;
+ }
 
  /* ── ANIMATIONS ── */
  .fade-in {
  opacity: 0;
- transform: translateY(18px);
- animation: fadeUp 0.7s ease forwards;
+ transform: translateY(20px);
+ animation: fadeUp 0.8s ease forwards;
  }
 
  @keyframes fadeUp {
  to { opacity: 1; transform: none; }
  }
 
- .fade-in:nth-child(1) { animation-delay: 0.1s; }
- .fade-in:nth-child(2) { animation-delay: 0.22s; }
- .fade-in:nth-child(3) { animation-delay: 0.34s; }
- .fade-in:nth-child(4) { animation-delay: 0.46s; }
- .fade-in:nth-child(5) { animation-delay: 0.58s; }
+ .fade-in:nth-child(1) { animation-delay: 0.08s; }
+ .fade-in:nth-child(2) { animation-delay: 0.2s; }
+ .fade-in:nth-child(3) { animation-delay: 0.32s; }
+ .fade-in:nth-child(4) { animation-delay: 0.44s; }
+ .fade-in:nth-child(5) { animation-delay: 0.56s; }
 
  /* ── RESPONSIVE ── */
  @media (max-width: 900px) {
@@ -692,92 +861,99 @@
 
  .hero { grid-template-columns: 1fr; }
  .hero-right { display: none; }
- .hero-left { padding: 4rem 1.5rem 5rem; border-right: none; }
+ .hero-left { padding: 4rem 1.5rem 4rem; border-right: none; justify-content: center; }
+ .hero-left::after { left: 1.5rem; right: 1.5rem; }
 
- .hero-headline { font-size: 2.2rem; }
- .hero-body { font-size: 0.92rem; }
- .hero-form { max-width: 100%; }
- .hero-form-row { flex-direction: column; align-items: stretch; }
- .hero-input { border-right: 1px solid var(--border); height: 52px; width: 100%; font-size: 1rem; }
+ .hero-headline { font-size: 2.6rem; }
+ .hero-deck { font-size: 0.95rem; }
+ .hero-cta-group { max-width: 100%; }
+ .hero-form-row { flex-direction: column; }
+ .hero-input { border-right: 1px solid var(--border); height: 52px; width: 100%; }
  .hero-btn { height: 52px; width: 100%; }
+
+ .ticker-bar { display: none; }
 
  section { padding: 5rem 1.5rem; }
 
  .how-grid { grid-template-columns: 1fr; }
- .how-cell { border-right: none; border-bottom: 0.5px solid var(--border); padding: 2rem 1.5rem; }
+ .how-cell { border-right: none; border-bottom: 1px solid var(--border); }
  .how-cell:last-child { border-bottom: none; }
- .how-num { font-size: 2.4rem; }
- .how-title { font-size: 1.05rem; }
 
  .signals-section { grid-template-columns: 1fr; }
  .signals-left { padding: 4rem 1.5rem; border-right: none; }
  .signals-right { padding: 3rem 1.5rem; }
- .signal-chips { gap: 10px; }
+
+ .digest-grid { grid-template-columns: 1fr; }
+ .digest-cell { border-right: none; border-bottom: 1px solid var(--border); }
+ .digest-cell:last-child { border-bottom: none; }
 
  .screenshots-grid { display: none; }
  .screenshots-scroll { display: flex; }
 
- .digest-levels { grid-template-columns: 1fr; gap: 3rem; }
+ .trust-strip { grid-template-columns: repeat(2, 1fr); }
+ .trust-cell { padding: 2rem 1.5rem; }
+ .trust-cell:nth-child(2) { border-right: none; }
 
  .offer-section { padding: 6rem 1.5rem; }
- .offer-form { flex-direction: column; max-width: 340px; align-items: stretch; }
- .offer-input { border-right: 1px solid var(--border); width: 100%; font-size: 16px; }
+ .offer-form { flex-direction: column; max-width: 340px; }
+ .offer-input { border-right: 1px solid var(--border); width: 100%; }
 
- footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+ footer {
+ padding: 2rem 1.5rem;
+ grid-template-columns: 1fr;
+ gap: 1rem;
+ }
+ .footer-copy { text-align: left; }
 
- .section-headline { font-size: 1.8rem; }
+ .section-title { font-size: 2rem; }
  }
 
  @media (max-width: 600px) {
- nav { height: 56px; }
- .nav-logo img { height: 30px; }
+ nav { height: 50px; padding: 0 1.25rem; }
+ .nav-logo img { height: 24px; }
+ .nav-logo-text { font-size: 0.75rem; }
 
- .hero { min-height: auto; }
- .hero-left { padding: 4rem 1.25rem 3rem; }
- .hero-kicker { font-size: 0.65rem; }
- .hero-headline { font-size: 1.75rem; letter-spacing: -0.01em; }
- .hero-body { font-size: 0.85rem; line-height: 1.65; margin-bottom: 2rem; }
- .hero-form { gap: 8px; }
- .hero-input { height: 48px; min-height: 48px; font-size: 16px; padding: 0 1rem; -webkit-appearance: none; border-radius: 0; }
- .hero-btn { height: 48px; min-height: 48px; font-size: 0.78rem; }
- .hero-smallprint { font-size: 0.65rem; }
+ .hero-left { padding: 3.5rem 1.25rem 3rem; }
+ .hero-edition { font-size: 0.56rem; }
+ .hero-headline { font-size: 2rem; }
+ .hero-deck { font-size: 0.88rem; line-height: 1.65; margin-bottom: 2.5rem; }
+ .hero-input { height: 48px; font-size: 0.82rem; }
+ .hero-btn { height: 48px; }
+ .hero-meta { font-size: 0.58rem; }
 
  section { padding: 3.5rem 1.25rem; }
- .section-tag { font-size: 0.6rem; }
- .section-headline { font-size: 1.5rem; }
-
- .how-cell { padding: 1.25rem 1.25rem; }
- .how-num { font-size: 1.8rem; margin-bottom: 1rem; }
- .how-title { font-size: 0.95rem; margin-bottom: 0.5rem; }
- .how-desc { font-size: 0.8rem; }
+ .section-label { font-size: 0.55rem; }
+ .section-title { font-size: 1.7rem; }
+ .how-title { font-size: 1.2rem; }
+ .how-desc { font-size: 0.82rem; }
 
  .signals-left { padding: 3rem 1.25rem; }
  .signals-right { padding: 2rem 1.25rem; }
- .signals-body { font-size: 0.85rem; }
- .chip-text { font-size: 0.75rem; }
- .chip-action { min-width: 44px; font-size: 0.6rem; }
+ .signals-body { font-size: 0.88rem; }
+ .chip-action { min-width: 70px; font-size: 0.56rem; padding: 0.85rem 0.8rem; }
+ .chip-text { font-size: 0.78rem; padding: 0.85rem 1rem; }
 
- .screenshots-scroll { margin-top: 2.5rem; }
- .screenshot-card { flex: 0 0 170px; }
+ .screenshots-scroll { margin-top: 2rem; }
+ .screenshots-scroll .screenshot-card { flex: 0 0 170px; }
  .screenshot-card:hover { transform: none; }
 
- .digest-levels { gap: 2rem; }
- .digest-item { font-size: 0.78rem; }
+ .trust-strip { grid-template-columns: 1fr 1fr; }
+ .trust-cell { padding: 1.5rem 1.25rem; }
+ .trust-value { font-size: 1.6rem; }
 
  .offer-section { padding: 4rem 1.25rem; }
- .offer-body { font-size: 0.85rem; }
- .offer-form { max-width: 100%; }
- .offer-input { height: 48px; min-height: 48px; font-size: 16px; padding: 0 1rem; -webkit-appearance: none; border-radius: 0; }
- .offer-btn { height: 48px; font-size: 0.78rem; }
+ .offer-body { font-size: 0.88rem; }
+ .offer-input { height: 48px; font-size: 0.82rem; }
+ .offer-btn { height: 48px; }
 
  footer { padding: 1.5rem 1.25rem; }
- .footer-links { gap: 1.5rem; }
+ .footer-links { gap: 1.25rem; flex-wrap: wrap; }
  }
 
- /* success state */
  .success-msg {
  display: none;
- font-size: 0.82rem;
+ font-family: var(--mono);
+ font-size: 0.78rem;
  letter-spacing: 0.06em;
  color: var(--risk-a);
  margin-top: 0.75rem;
@@ -788,9 +964,9 @@
 
 <!-- NAV -->
 <nav>
- <a href="#" class="nav-logo" aria-label="Clavix home" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
- <img src="img/App Logo.png" alt="Clavix" style="height:36px;width:auto;display:block;">
- <span style="font-family:'Inter',sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:0.12em;color:#FEF5E7;text-transform:uppercase;">CLAVIX</span>
+ <a href="#" class="nav-logo" aria-label="Clavix home">
+ <img src="img/App Logo.png" alt="Clavix">
+ <span class="nav-logo-text">Clavix</span>
  </a>
  <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
  <span></span><span></span><span></span>
@@ -806,34 +982,45 @@
 <!-- HERO -->
 <section class="hero" style="border-top: none; padding: 0;">
  <div class="hero-left">
- <div class="hero-kicker fade-in">For Self-Directed Investors</div>
+ <div class="hero-edition fade-in">Portfolio Intelligence &mdash; Early Access</div>
  <h1 class="hero-headline fade-in">
- Know where your portfolio<br>stands
+ Know where your<br>portfolio <span class="ital">stands</span>
  </h1>
- <p class="hero-body fade-in">
- Clavix tracks your holdings, analyzes market-moving news, and scores downside risk - so you always know what matters and what needs attention.
+ <p class="hero-deck fade-in">
+ Clavix tracks your holdings, analyzes market-moving news, and scores downside risk &mdash; so you always know what matters and what needs attention.
  </p>
- <div class="hero-form fade-in">
+ <div class="hero-cta-group fade-in">
  <div class="hero-form-row">
  <input class="hero-input" type="email" id="hero-email" placeholder="your@email.com" />
  <button class="hero-btn" onclick="signup('hero-email','hero-success')">Get early access</button>
  </div>
  <div class="success-msg" id="hero-success">You're on the list. First month is on us.</div>
- <p class="hero-smallprint">First month free &middot; No credit card &middot; Cancel anytime</p>
- <p class="hero-counter" id="hero-counter">Join <span id="waitlist-count">1</span>+ investor on the waitlist</p>
+ <p class="hero-meta">First month free &middot; No credit card &middot; Cancel anytime<br>Join <span id="waitlist-count">1</span>+ investor on the waitlist</p>
  </div>
  </div>
 
  <div class="hero-right">
- <img class="hero-phone" src="img/screenshots/hero-dashboard.jpg" alt="Clavix app dashboard - portfolio risk score" />
- <div class="hero-phone-caption">Portfolio Risk &middot; Holdings &middot; Digest</div>
+ <img class="hero-phone" src="img/screenshots/hero-dashboard.jpg" alt="Clavix app dashboard" />
+ <div class="hero-phone-caption">Risk Score &middot; Holdings &middot; Digest</div>
  </div>
 </section>
 
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+ <div class="ticker-row">
+ <div class="ticker-item"><span class="ticker-sym">AAPL</span> <span class="ticker-grade g-a">A</span> <span class="ticker-action">ADD</span> <span class="ticker-dim">|</span></div>
+ <div class="ticker-item"><span class="ticker-sym">TSLA</span> <span class="ticker-grade g-d">D</span> <span class="ticker-action">REDUCE</span> <span class="ticker-dim">|</span></div>
+ <div class="ticker-item"><span class="ticker-sym">MSFT</span> <span class="ticker-grade g-b">B</span> <span class="ticker-action">IGNORE</span> <span class="ticker-dim">|</span></div>
+ <div class="ticker-item"><span class="ticker-sym">NVDA</span> <span class="ticker-grade g-c">C</span> <span class="ticker-action">MONITOR</span> <span class="ticker-dim">|</span></div>
+ <div class="ticker-item"><span class="ticker-sym">AMZN</span> <span class="ticker-grade g-a">A</span> <span class="ticker-action">ADD</span> <span class="ticker-dim">|</span></div>
+ <div class="ticker-item"><span class="ticker-sym">HOOD</span> <span class="ticker-grade g-f">F</span> <span class="ticker-action">EXIT</span></div>
+ </div>
+</div>
+
 <!-- HOW IT WORKS -->
 <section id="how">
- <div class="section-tag">How Clavix Works</div>
- <h2 class="section-headline">From holdings to a daily<br>risk briefing in minutes</h2>
+ <div class="section-label">How it works</div>
+ <h2 class="section-title">From holdings to a daily<br>risk briefing <span class="dim">in minutes</span></h2>
 
  <div class="how-grid">
  <div class="how-cell">
@@ -848,7 +1035,7 @@
  </div>
  <div class="how-cell">
  <div class="how-num">03</div>
- <h3 class="how-title">Your Portfolio&rsquo;s Risk, Scored and Explained</h3>
+ <h3 class="how-title">Risk, Scored and Explained</h3>
  <p class="how-desc">Clavix analyzes each position and assigns a clear downside risk score, explaining what changed, why it matters, and how it affects your portfolio.</p>
  </div>
  </div>
@@ -857,12 +1044,12 @@
 <!-- SIGNALS -->
 <div class="signals-section" id="signals">
  <div class="signals-left">
- <div class="section-tag">The action system</div>
- <h2 class="section-headline">Clear actions.<br>No noise.</h2>
+ <div class="section-label">The action system</div>
+ <h2 class="section-title">Clear actions.<br><span class="dim">No noise.</span></h2>
  <p class="signals-body">
  Every market event is filtered through your portfolio and translated into one clear action. What matters, what doesn't, and what to do next.
  </p>
- <div class="signal-chips" style="margin-top:2rem;">
+ <div class="signal-chips">
  <div class="signal-chip chip-ignore">
  <span class="chip-action">Ignore</span>
  <div class="chip-divider"></div>
@@ -898,32 +1085,52 @@
 
 <!-- DIGEST -->
 <section id="digest">
- <div class="section-tag">Daily digest</div>
- <h2 class="section-headline">What changed. What it means.<br>What to do.</h2>
+ <div class="section-label">Daily digest</div>
+ <h2 class="section-title">What changed. What it means.<br><span class="dim">What to do.</span></h2>
 
- <div class="how-grid">
- <div class="how-cell">
- <div class="how-num">01</div>
- <h3 class="how-title">Market Context</h3>
- <p class="how-desc">Clavix summarizes the key macro events shaping the market, highlighting what could impact your portfolio before you even look at positions.</p>
+ <div class="digest-grid">
+ <div class="digest-cell">
+ <div class="digest-cell-num">01</div>
+ <h3 class="digest-cell-title">Market Context</h3>
+ <p class="digest-cell-body">Clavix summarizes the key macro events shaping the market, highlighting what could impact your portfolio before you even look at positions.</p>
  </div>
- <div class="how-cell">
- <div class="how-num">02</div>
- <h3 class="how-title">Where You&rsquo;re Exposed</h3>
- <p class="how-desc">Clavix connects market and sector shifts directly to your holdings, showing exactly where your portfolio is most at risk.</p>
+ <div class="digest-cell">
+ <div class="digest-cell-num">02</div>
+ <h3 class="digest-cell-title">Where You're Exposed</h3>
+ <p class="digest-cell-body">Clavix connects market and sector shifts directly to your holdings, showing exactly where your portfolio is most at risk.</p>
  </div>
- <div class="how-cell">
- <div class="how-num">03</div>
- <h3 class="how-title">Clear Actions</h3>
- <p class="how-desc">Each position is translated into a clear action &mdash; ignore, monitor, reduce, exit, or add &mdash; so you know exactly what to do next.</p>
+ <div class="digest-cell">
+ <div class="digest-cell-num">03</div>
+ <h3 class="digest-cell-title">Clear Actions</h3>
+ <p class="digest-cell-body">Each position is translated into a clear action &mdash; ignore, monitor, reduce, exit, or add &mdash; so you know exactly what to do next.</p>
  </div>
  </div>
 </section>
 
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+ <div class="trust-cell">
+ <div class="trust-value">5</div>
+ <div class="trust-label">Risk Dimensions</div>
+ </div>
+ <div class="trust-cell">
+ <div class="trust-value"><span class="accent">&lt;</span> 3m</div>
+ <div class="trust-label">Analysis Time</div>
+ </div>
+ <div class="trust-cell">
+ <div class="trust-value">A<span class="accent">&ndash;</span>F</div>
+ <div class="trust-label">Risk Grades</div>
+ </div>
+ <div class="trust-cell">
+ <div class="trust-value">24/7</div>
+ <div class="trust-label">News Monitoring</div>
+ </div>
+</div>
+
 <!-- SEE THE APP -->
 <section id="app">
- <div class="section-tag">See the app</div>
- <h2 class="section-headline">Every screen designed to<br>keep you ahead</h2>
+ <div class="section-label">See the app</div>
+ <h2 class="section-title">Every screen designed to<br><span class="dim">keep you ahead</span></h2>
 
  <div class="screenshots-grid">
  <div class="screenshot-card">
@@ -989,24 +1196,24 @@
 
 <!-- OFFER CTA -->
 <section id="offer" class="offer-section">
- <div class="section-tag">Early access</div>
- <h2 class="section-headline">Your first month is free.<br>No commitment required.</h2>
- <p class="offer-body">Get early access to Clavix and finally see how much risk you&rsquo;re taking on, and when you should actually do something about it.</p>
+ <div class="section-label">Early access</div>
+ <h2 class="section-title">Your first month is free.<br><span class="dim">No commitment required.</span></h2>
+ <p class="offer-body">Get early access to Clavix and finally see how much risk you're taking on, and when you should actually do something about it.</p>
 
  <div class="offer-form">
  <input class="offer-input" type="email" id="offer-email" placeholder="your@email.com" />
  <button class="offer-btn" onclick="signup('offer-email','offer-success')">Reserve my spot</button>
  </div>
- <div class="success-msg" id="offer-success" style="justify-content: center; color: var(--risk-a); margin: 0.75rem auto 0;">Your spot is reserved. We&rsquo;ll be in touch.</div>
+ <div class="success-msg" id="offer-success" style="justify-content: center; color: var(--risk-a); margin: 0.75rem auto 0;">Your spot is reserved. We'll be in touch.</div>
  <p class="offer-smallprint">No credit card &middot; Cancel anytime &middot; Your data is never sold</p>
  <p class="offer-counter" id="offer-counter">Join <span id="offer-waitlist-count">2</span>+ investors on the waitlist</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
- <div style="display:flex;align-items:center;gap:10px;">
- <img src="img/App Logo.png" alt="Clavix" style="height:28px;width:auto;display:block;opacity:0.85;">
- <span style="font-family:'Inter',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.12em;color:#FEF5E7;text-transform:uppercase;opacity:0.6;">CLAVIX</span>
+ <div class="footer-brand">
+ <img src="img/App Logo.png" alt="Clavix">
+ <span class="footer-brand-text">Clavix</span>
  </div>
  <span class="footer-copy">&copy; 2026 Clavix. All rights reserved.</span>
  <ul class="footer-links">
@@ -1016,7 +1223,7 @@
  <li><a href="/methodology">Methodology</a></li>
  <li><a href="mailto:support@getclavix.com">Contact</a></li>
  </ul>
- <p class="footer-risk" style="width:100%;font-size:0.68rem;color:var(--text-sec);line-height:1.6;border-top:0.5px solid var(--border);padding-top:1rem;margin-top:0.5rem;">Clavix is for informational purposes only and does not provide investment advice. Nothing on this site or in the app constitutes a recommendation to buy, sell, or hold any security. Portfolio risk scores and signal actions are generated algorithmically and may be inaccurate, delayed, or incomplete. Always do your own research and consult a licensed financial advisor before making investment decisions.</p>
+ <p class="footer-risk">Clavix is for informational purposes only and does not provide investment advice. Nothing on this site or in the app constitutes a recommendation to buy, sell, or hold any security. Portfolio risk scores and signal actions are generated algorithmically and may be inaccurate, delayed, or incomplete. Always do your own research and consult a licensed financial advisor before making investment decisions.</p>
 </footer>
 
 <script>
@@ -1085,7 +1292,7 @@
  });
  }, { threshold: 0.15 });
 
- document.querySelectorAll('.how-cell, .signal-chip, .screenshot-card').forEach(el => {
+ document.querySelectorAll('.how-cell, .signal-chip, .screenshot-card, .trust-cell, .digest-cell').forEach(el => {
  el.style.opacity = '0';
  el.style.transform = 'translateY(16px)';
  observer.observe(el);
